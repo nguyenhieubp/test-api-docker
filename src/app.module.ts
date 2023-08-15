@@ -3,14 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BlogModule } from './blog/blog.module';
-//eLlD6mcZHgu6guqW
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 @Module({
-  imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://nguyenhieu11ka:eLlD6mcZHgu6guqW@cluster0.mnl9kh4.mongodb.net/?retryWrites=true&w=majority',
-    ),
-    BlogModule,
-  ],
+  imports: [MongooseModule.forRoot(process.env.URL_DATABASE), BlogModule],
   controllers: [AppController],
   providers: [AppService],
 })
